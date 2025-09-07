@@ -185,7 +185,7 @@
                         <span class="text-blue-600">Iraq</span>_Fit8
                     </div>
                 </div>
-                <div class=,"block","hidden md:block">
+                <div class="hidden md:flex">
                     <div
                         class="bg-gradient-to-r from-blue-50 to-blue-100 border-2 border-blue-200 rounded-2xl px-6 py-3 shadow-lg backdrop-blur-sm">
                         <div class="flex items-center space-x-6">
@@ -232,8 +232,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-red-500">
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-red-500 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" aria-label="فتح القائمة الرئيسية">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -241,32 +241,16 @@
         </div>
         <!-- Mobile menu -->
         <div id="mobile-menu"
-            class="md:hidden hidden bg-gradient-to-b from-blue-50 to-white border-t border-blue-200 shadow-lg">
+            class="md:hidden hidden bg-gradient-to-b from-blue-50 to-white border-t border-blue-200 shadow-lg" role="menu">
             <div class="px-4 pt-4 pb-6 space-y-2">
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('home')">الرئيسية</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('about')">من أنا؟</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('courses')">البرامج</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('pricing')">الأسعار</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('transformations')">تطورات المشتركين</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('gallery')">المعرض</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('faq')">الأسئلة الشائعة</a>
-                <a href="#"
-                    class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm"
-                    onclick="showPage('contact')">اتصل بنا</a>
+                <a href="#" class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm" data-nav="home">الرئيسية</a>
+                <a href="#" class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm" data-nav="about">من أنا؟</a>
+                <a href="#" class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm" data-nav="courses">البرامج</a>
+                <a href="#" class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm" data-nav="pricing">الأسعار</a>
+                <a href="#" class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm" data-nav="transformations">تطورات المشتركين</a>
+                <a href="#" class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm" data-nav="gallery">المعرض</a>
+                <a href="#" class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm" data-nav="faq">الأسئلة الشائعة</a>
+                <a href="#" class="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-300 shadow-sm" data-nav="contact">اتصل بنا</a>
             </div>
         </div>
     </nav>
@@ -2216,27 +2200,46 @@
             }
         });
     </script>
-    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'97a06cfc61a765c2',t:'MTc1NzAxOTcyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 
-   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const links = mobileMenu.querySelectorAll("a");
+    <script>
+    // ...existing code...
+    // Mobile menu robust handler
+    document.addEventListener("DOMContentLoaded", function () {
+        // ...existing code...
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileLinks = mobileMenu.querySelectorAll("[data-nav]");
 
-    // إظهار/إخفاء القائمة عند الضغط على زر ☰
-    mobileMenuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
+        // Toggle menu
+        mobileMenuBtn.addEventListener("click", function () {
+            const isOpen = !mobileMenu.classList.contains("hidden");
+            mobileMenu.classList.toggle("hidden");
+            mobileMenuBtn.setAttribute("aria-expanded", String(!isOpen));
+        });
+
+        // Handle link click: close menu and scroll/navigate
+        mobileLinks.forEach(link => {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+                const pageId = link.getAttribute("data-nav");
+                // Hide menu
+                mobileMenu.classList.add("hidden");
+                mobileMenuBtn.setAttribute("aria-expanded", "false");
+                // Use showPage if available, else scroll to anchor
+                if (typeof showPage === 'function') {
+                    showPage(pageId);
+                } else {
+                    const section = document.getElementById(pageId);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+        // ...existing code...
     });
-
-    // إخفاء القائمة عند الضغط على أي رابط
-    links.forEach(link => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-      });
-    });
-  });
-</script>
+    // ...existing code...
+    </script>
 
 
 
