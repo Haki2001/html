@@ -1759,112 +1759,36 @@
     </footer>
 
     <script>
-        // Global variables
-        let currentTestimonial = 0;
-        let currentFAQ = -1;
-        let editMode = false;
-        let isOwner = false;
-        let logoClickCount = 0;
+        // ...existing code...
+        // Remove duplicate mobile menu JS and refactor for accessibility and reliability
+        document.addEventListener("DOMContentLoaded", function () {
+            // ...existing code...
+            // Mobile menu accessibility and toggle
+            const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const links = mobileMenu.querySelectorAll("a");
 
-        // Owner authentication
-        const OWNER_PASSWORD = "Iraq_Fit8_2024"; // كلمة المرور الخاصة بك
+            // Add ARIA attributes for accessibility
+            mobileMenuBtn.setAttribute("aria-controls", "mobile-menu");
+            mobileMenuBtn.setAttribute("aria-expanded", "false");
+            mobileMenuBtn.setAttribute("aria-label", "فتح القائمة الرئيسية");
+            mobileMenu.setAttribute("role", "menu");
 
-        // Content Management System
-        const contentData = {
-            heroTitle: "حول جسمك",
-            heroSubtitle: ", حول حياتك",
-            heroDescription: "انضم إلى Iraq_Fit8 واكتشف أقوى نسخة من نفسك",
-            openingDate: "الافتتاح يوم الجمعة 29 من الشهر الحالي",
-            openingNote: "احجز مكانك مبكراً لضمان متابعة دقيقة لكل مشترك",
-            trainerName: "المدرب عراق محمد",
-            trainerBio: "مدرّب لياقة بدنية معتمد، أمتلك شغفًا لا ينطفئ بالرياضة، وخبرة تمتد لأكثر من 12 عامًا في مجال التدريب الرياضي والصحة البدنية",
-            phone: "07769484009",
-            instagram: "https://instagram.com/Iraq__Fit8",
-            whatsapp: "https://wa.me/77000000000"
-        };
+            // Toggle menu on hamburger click
+            mobileMenuBtn.addEventListener("click", function () {
+                const isOpen = !mobileMenu.classList.contains("hidden");
+                mobileMenu.classList.toggle("hidden");
+                mobileMenuBtn.setAttribute("aria-expanded", String(!isOpen));
+            });
 
-        const testimonials = [
-            {
-                name: "Sarah Thompson",
-                role: "Marketing Manager",
-                rating: 5,
-                text: "FitZone completely transformed my life! I lost 40 pounds in 6 months and gained incredible strength and confidence. The trainers are amazing and the community is so supportive. I actually look forward to my workouts now!",
-                achievement: "Lost 40 lbs in 6 months"
-            },
-            {
-                name: "Michael Chen",
-                role: "Software Engineer",
-                rating: 5,
-                text: "As someone who sits at a desk all day, I was struggling with back pain and low energy. The personal training program at FitZone fixed my posture issues and I feel more energetic than I have in years. Best investment I've made!",
-                achievement: "Eliminated chronic back pain"
-            },
-            {
-                name: "Emily Rodriguez",
-                role: "Teacher",
-                rating: 5,
-                text: "The yoga and pilates classes have been life-changing. Emma is an incredible instructor who helped me find balance between strength and flexibility. I'm stronger and more centered than ever before.",
-                achievement: "Improved flexibility by 200%"
-            },
-            {
-                name: "James Wilson",
-                role: "Retired Veteran",
-                rating: 5,
-                text: "At 55, I thought my best fitness days were behind me. FitZone proved me wrong! The trainers adapted everything to my needs and limitations. I'm in the best shape of my life and feel 20 years younger.",
-                achievement: "Gained 15 lbs of muscle at age 55"
-            }
-        ];
-
-        const galleryItems = [
-            {
-                title: "منطقة تدريب الأوزان",
-                description: "معدات حديثة ومتطورة لجميع احتياجات تدريب القوة. من الأوزان الحرة إلى الآلات المتقدمة، لدينا كل ما تحتاجه لبناء العضلات وزيادة القوة.",
-                icon: "fas fa-dumbbell"
-            },
-            {
-                title: "منطقة الكارديو",
-                description: "معدات كارديو حديثة مع أنظمة ترفيه ومراقبة معدل ضربات القلب. أجهزة الجري والدراجات وأكثر للحفاظ على صحة قلبك وقوته.",
-                icon: "fas fa-running"
-            },
-            {
-                title: "استوديو اليوغا",
-                description: "مساحة هادئة ومخصصة لليوغا والبيلاتس والتأمل. إضاءة طبيعية وأجواء مهدئة مثالية للحركة الواعية والاسترخاء.",
-                icon: "fas fa-leaf"
-            },
-            {
-                title: "الحصص الجماعية",
-                description: "حصص لياقة جماعية نشطة تشمل HIIT وكروس فيت وزومبا والمزيد. انضم لمجتمعنا واحصل على الدافع من خلال التمرين مع الآخرين.",
-                icon: "fas fa-users"
-            },
-            {
-                title: "حمام السباحة",
-                description: "حمام سباحة بحجم أولمبي للسباحة والتمارين المائية والعلاج المائي. مثالي للكارديو منخفض التأثير وتكييف الجسم بالكامل.",
-                icon: "fas fa-swimmer"
-            },
-            {
-                title: "منطقة الاستشفاء",
-                description: "مساحة مخصصة للتمدد والتدليك والاستشفاء. تشمل الساونا وغرف العلاج بالتدليك ومناطق الاسترخاء للتعافي بعد التمرين.",
-                icon: "fas fa-spa"
-            },
-            {
-                title: "بار التغذية",
-                description: "عصائر صحية ومخفوقات البروتين والوجبات الخفيفة المغذية. خبراء التغذية لدينا يمكنهم مساعدتك في تغذية تمارينك والتعافي بشكل صحيح.",
-                icon: "fas fa-utensils"
-            },
-            {
-                title: "قصص النجاح",
-                description: "جدار الشهرة الذي يعرض التحولات والإنجازات المذهلة لأعضائنا. احصل على الإلهام من أشخاص حقيقيين حققوا أهدافهم في اللياقة البدنية مع Iraq_Fit8.",
-                icon: "fas fa-trophy"
-            }
-        ];
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function () {
-            initializeAnimations();
-            loadTestimonial();
-            setupMobileMenu();
-            loadContentFromStorage();
-            updateContent();
-            checkOwnerAccess();
+            // Hide menu on link click
+            links.forEach(link => {
+                link.addEventListener("click", function () {
+                    mobileMenu.classList.add("hidden");
+                    mobileMenuBtn.setAttribute("aria-expanded", "false");
+                });
+            });
+            // ...existing code...
         });
 
         // Logo click function to reveal owner login
