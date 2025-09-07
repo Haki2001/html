@@ -12,114 +12,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .hero-gradient {
-            background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%);
-        }
-
-        .accent-gradient {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s ease;
-        }
-
-        .slide-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.8s ease;
-        }
-
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: #3b82f6;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .testimonial-card {
-            min-height: 200px;
-            transition: all 0.5s ease;
-        }
-
         .faq-answer {
-            max-height: 0;
-            overflow: hidden;
             transition: max-height 0.3s ease;
         }
 
@@ -804,7 +697,7 @@
                             </li>
                         </ul>
                         <button onclick="showPackageDetails('3months')"
-                            class="w-full accent-gradient text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 pulse-animation transform hover:scale-105">
+                            class="w-full accent-gradient text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 pulse-animation">
                             رؤية التفاصيل
                         </button>
                     </div>
@@ -2200,53 +2093,22 @@
             }
         });
     </script>
-
+    <!-- Mobile menu toggle script: placed at the end of body for reliability -->
     <script>
-    // ...existing code...
-    // Mobile menu robust handler
-    document.addEventListener("DOMContentLoaded", function () {
-        // ...existing code...
-        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-        const mobileLinks = mobileMenu.querySelectorAll("[data-nav]");
-
-        // Toggle menu
-        mobileMenuBtn.addEventListener("click", function () {
-            const isOpen = !mobileMenu.classList.contains("hidden");
-            mobileMenu.classList.toggle("hidden");
-            mobileMenuBtn.setAttribute("aria-expanded", String(!isOpen));
+document.addEventListener('DOMContentLoaded', function () {
+    var menuBtn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    if (menuBtn && menu) {
+        menuBtn.addEventListener('click', function () {
+            menu.classList.toggle('hidden');
+            // Update aria-expanded for accessibility
+            var expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            menuBtn.setAttribute('aria-expanded', String(!expanded));
         });
-
-        // Handle link click: close menu and scroll/navigate
-        mobileLinks.forEach(link => {
-            link.addEventListener("click", function (e) {
-                e.preventDefault();
-                const pageId = link.getAttribute("data-nav");
-                // Hide menu
-                mobileMenu.classList.add("hidden");
-                mobileMenuBtn.setAttribute("aria-expanded", "false");
-                // Use showPage if available, else scroll to anchor
-                if (typeof showPage === 'function') {
-                    showPage(pageId);
-                } else {
-                    const section = document.getElementById(pageId);
-                    if (section) {
-                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
-            });
-        });
-        // ...existing code...
-    });
-    // ...existing code...
-    </script>
-
-
-
-
+    }
+});
+</script>
 </body>
-
-
 </html>
 
 
